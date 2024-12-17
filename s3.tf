@@ -98,7 +98,7 @@ resource "aws_s3_object" "redoc" {
   cache_control = "public, max-age=0"
 
   content = templatefile("${path.module}/resources/redoc.html", {
-    title = var.title
+    title = urlencode(var.title)
     apis  = terraform_data.apis.output
   })
   content_type = "text/html"
